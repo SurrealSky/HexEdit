@@ -1,0 +1,9 @@
+﻿使用说明：
+导出头文件:
+ExportHexControl.h改为ImportHexControl.h
+主要将其中的dllexport改为dllimport
+调用示例：
+CWnd *p1=HexEditControl::ShowHexControl(this->m_hWnd, 0, 0, 600, 40);
+BYTE buffer[] = "1213123213213 dsdfsafsda";
+HexEditControl::SetData(p1,buffer, sizeof(buffer));
+HexEditControl::SetWideView(p1,TRUE);

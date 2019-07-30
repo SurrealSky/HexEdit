@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyHexEdit", "MyHexEdit\MyHexEdit.vcxproj", "{AE62CFB5-6402-49A5-B22B-1036043CE255}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HexControl", "HexControl\HexControl.vcxproj", "{E694F3B2-E296-48CC-955E-25B2CB5E9677}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HexView", "HexView\HexView.vcxproj", "{3FBA3178-4AE6-4103-9EB2-542901D978B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE62CFB5-6402-49A5-B22B-1036043CE255}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AE62CFB5-6402-49A5-B22B-1036043CE255}.Debug|Win32.Build.0 = Debug|Win32
+		{AE62CFB5-6402-49A5-B22B-1036043CE255}.Debug|x64.ActiveCfg = Debug|Win32
+		{AE62CFB5-6402-49A5-B22B-1036043CE255}.Release|Win32.ActiveCfg = Release|Win32
+		{AE62CFB5-6402-49A5-B22B-1036043CE255}.Release|Win32.Build.0 = Release|Win32
+		{AE62CFB5-6402-49A5-B22B-1036043CE255}.Release|x64.ActiveCfg = Release|Win32
+		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Debug|Win32.Build.0 = Debug|Win32
+		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Debug|x64.ActiveCfg = Debug|Win32
+		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Release|Win32.ActiveCfg = Release|Win32
+		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Release|Win32.Build.0 = Release|Win32
+		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Release|x64.ActiveCfg = Release|Win32
+		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Debug|Win32.Build.0 = Debug|Win32
+		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Debug|x64.ActiveCfg = Debug|x64
+		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Debug|x64.Build.0 = Debug|x64
+		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Release|Win32.ActiveCfg = Release|Win32
+		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Release|Win32.Build.0 = Release|Win32
+		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Release|x64.ActiveCfg = Release|x64
+		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
