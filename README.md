@@ -1,2 +1,7 @@
 # HexEdit
-用于数据的hex格式展示和修改库
+- https://github.com/SurrealSky/HexEdit
+- mail：securitysky@sina.com
+
+## 介绍
+
+*	HexEdit是基于数据的十六进制展示和编辑插件，可以lib+dll的方式导入自己的工程。
