@@ -113,7 +113,7 @@ size_t HexView::FormatAddress(size_w addr, TCHAR *buf, size_t buflen)
 	size_t len = _tcslen(buf);
 
 	if(len > m_nAddressWidth)
-		wmemmove(buf+1, buf + (len - m_nAddressWidth) + 1, len-m_nAddressWidth+1);
+		memmove(buf+1, buf + (len - m_nAddressWidth) + 1, len-m_nAddressWidth+1);
 
 	return _tcslen(buf);
 }
@@ -306,7 +306,7 @@ size_t HexView::FormatLine(
 			if(i < fixthis)
 			{
 				col1.colBG = col2.colBG = GetHexColour(HVC_BACKGROUND);
-				wmemset(ptr-len, ' ', len);
+				memset(ptr-len, ' ', len);
 			}
 
 

@@ -14,7 +14,7 @@ CWnd* HexEditControl::ShowHexControl(HWND hMainWnd, int x,int y,int cx,int cy)
 	BOOL retValue = pDlg->Create(IDD_HEXEDIT_VIEW_PAGE, pMainWnd);
 	if (!retValue)
 	{
-		AfxMessageBox(L"创建包含树列表控件的对话框失败了!");
+		AfxMessageBox("创建包含树列表控件的对话框失败了!");
 		return 0;
 	}
 	pDlg->SetResizeStyle(FALSE);
@@ -34,7 +34,7 @@ CWnd* HexEditControl::ShowHexControlEx(HWND hMainWnd, unsigned int x, unsigned i
 	BOOL retValue = pDlg->Create(IDD_HEXEDIT_VIEW_PAGE, pMainWnd);
 	if (!retValue)
 	{
-		AfxMessageBox(L"创建包含树列表控件的对话框失败了!");
+		AfxMessageBox("创建包含树列表控件的对话框失败了!");
 		return 0;
 	}
 	pDlg->SetResizeStyle(isCanResize);
