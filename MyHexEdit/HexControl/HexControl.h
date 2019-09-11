@@ -24,4 +24,5 @@ public:
 	virtual BOOL InitInstance();
 
 	DECLARE_MESSAGE_MAP()
+	virtual int ExitInstance();
 };

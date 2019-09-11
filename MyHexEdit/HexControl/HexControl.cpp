@@ -58,6 +58,14 @@ CHexControlApp theApp;
 BOOL CHexControlApp::InitInstance()
 {
 	CWinApp::InitInstance();
-
+	::OleInitialize(NULL);
 	return TRUE;
+}
+
+
+int CHexControlApp::ExitInstance()
+{
+	// TODO: 在此添加专用代码和/或调用基类
+	::OleUninitialize();
+	return CWinApp::ExitInstance();
 }
