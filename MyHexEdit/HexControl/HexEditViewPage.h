@@ -48,6 +48,7 @@ private:
 	CHexEditViewPage *m_pTipDlg;
 	BOOL isCanMove;
 	BOOL isCanReszie;
+	DWORD_PTR ptr;
 private:
 	void DeleteSelection();
 	COleDataSource* CreateDataSource(unsigned int type);
@@ -67,5 +68,7 @@ public:
 	unsigned __int64 GetDataLen();
 	void GetData(BYTE *buffer, unsigned __int64);
 	void SetData(BYTE *buffer, unsigned __int64);
+	void SetDataPtr(DWORD_PTR ptr);
+	DWORD_PTR GetDataPtr();
 	static LRESULT CALLBACK HexViewWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 };

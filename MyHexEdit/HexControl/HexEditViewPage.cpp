@@ -19,6 +19,7 @@ CHexEditViewPage::CHexEditViewPage(CWnd* pParent /*=NULL*/)
 	isCanMove=FALSE;
 	isCanReszie=FALSE;
 	m_pTipDlg = NULL;
+	ptr = 0;
 }
 
 CHexEditViewPage::CHexEditViewPage(BOOL isA)
@@ -26,6 +27,7 @@ CHexEditViewPage::CHexEditViewPage(BOOL isA)
 {
 	isCanMove = isA;
 	m_pTipDlg = NULL;
+	ptr = 0;
 }
 
 CHexEditViewPage::~CHexEditViewPage()
@@ -334,6 +336,16 @@ void CHexEditViewPage::SetData(BYTE *buffer, unsigned __int64 len)
 	HexView_SetDataCur(hwndHV, buffer, len);
 	HexView_SetCurPos(hwndHV, 0);
 	HexView_SetRedraw(hwndHV, true);
+}
+
+void CHexEditViewPage::SetDataPtr(DWORD_PTR ptr)
+{
+	this->ptr = ptr;
+}
+
+DWORD_PTR CHexEditViewPage::GetDataPtr()
+{
+	return ptr;
 }
 
 //把粘贴板数据按照固定格式读出

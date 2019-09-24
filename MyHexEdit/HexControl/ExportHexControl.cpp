@@ -60,3 +60,15 @@ void HexEditControl::SetData(CWnd *p, BYTE *data, unsigned __int64 len)
 	 CHexEditViewPage *pDlg = static_cast<CHexEditViewPage*>(p);
 	 pDlg->GetData(data, len);
  }
+
+ void HexEditControl::SetDataPtr(CWnd *p, DWORD_PTR ptr)
+ {
+	 CHexEditViewPage *pDlg = static_cast<CHexEditViewPage*>(p);
+	 pDlg->SetDataPtr(ptr);
+ }
+
+ DWORD_PTR HexEditControl::GetDataPtr(CWnd *p)
+ {
+	 CHexEditViewPage *pDlg = static_cast<CHexEditViewPage*>(p);
+	 return pDlg->GetDataPtr();
+ }

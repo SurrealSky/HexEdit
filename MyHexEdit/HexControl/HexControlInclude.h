@@ -21,4 +21,6 @@ namespace HexEditControl
 	extern "C" DLLEXPORT void SetData(CWnd*, BYTE *data, unsigned __int64 len);
 	extern "C" DLLEXPORT unsigned __int64 GetDataLength(CWnd*);
 	extern "C" DLLEXPORT void GetData(CWnd*, BYTE *data, unsigned __int64 len);
+	extern "C" DLLEXPORT void SetDataPtr(CWnd*, DWORD_PTR ptr);
+	extern "C" DLLEXPORT DWORD_PTR GetDataPtr(CWnd *p);
 }
