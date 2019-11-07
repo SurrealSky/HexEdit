@@ -19,6 +19,17 @@ CWnd* HexEditControl::ShowHexControl(HWND hMainWnd, int x,int y,int cx,int cy)
 	}
 	pDlg->SetResizeStyle(FALSE);
 	pDlg->ShowWindow(SW_SHOW);
+	CPoint points[2];
+	points[0].x = x;
+	points[0].y = y;
+	points[1].x = x+cx;
+	points[1].y = y+cy;
+
+	DPtoLP(::GetDC(pMainWnd->m_hWnd), points, 2);
+	x = points[0].x;
+	y = points[0].y;
+	cx = points[1].x - points[0].x;
+	cy = points[1].y - points[1].y;
 	pDlg->MoveWindow(x,y,cx,cy, TRUE);
 	return pDlg;
 }
@@ -39,7 +50,17 @@ CWnd* HexEditControl::ShowHexControlEx(HWND hMainWnd, unsigned int x, unsigned i
 	}
 	pDlg->SetResizeStyle(isCanResize);
 	pDlg->ShowWindow(SW_SHOW);
-	pDlg->MoveWindow(x,y,cx,cy,TRUE);
+	CPoint points[2];
+	points[0].x = x;
+	points[0].y = y;
+	points[1].x = x + cx;
+	points[1].y = y + cy;
+	DPtoLP(::GetDC(pMainWnd->m_hWnd), points, 2);
+	x = points[0].x;
+	y= points[0].y;
+	cx = points[1].x - points[0].x;
+	cy = points[1].y - points[0].y;
+	pDlg->MoveWindow(x, y, cx, cy, TRUE);
 	return pDlg;
 }
 
