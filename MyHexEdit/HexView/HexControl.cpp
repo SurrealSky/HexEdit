@@ -22,7 +22,7 @@
 #define CT_View			3
 
 
-HexControl::HexControl(HWND hParent):m_hWndParent(hParent)
+HexControl::HexControl()
 {
 }
 
@@ -537,8 +537,9 @@ LRESULT CALLBACK MyHexViewWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPa
 	return mDefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-void HexControl::CreateHexView(HINSTANCE hinstance)
+void HexControl::CreateHexView(HINSTANCE hinstance,HWND hParent)
 {
+	m_hWndParent = hParent;
 	m_hWndHexView = ::CreateHexView(m_hWndParent);
 	// set the right-click context menu
 

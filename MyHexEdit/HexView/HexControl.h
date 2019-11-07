@@ -6,10 +6,10 @@
 class HexControl
 {
 public:
-	HexControl(HWND hParent);
+	HexControl();
 	~HexControl();
 public:
-	void CreateHexView(HINSTANCE);
+	void CreateHexView(HINSTANCE, HWND);
 	void SetPosition(int x, int y, int width, int height);
 	void SetData(BYTE *data, unsigned __int64 len);
 	unsigned __int64 GetDataLen();

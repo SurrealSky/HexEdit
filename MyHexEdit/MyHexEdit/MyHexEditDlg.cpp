@@ -115,8 +115,8 @@ BOOL CMyHexEditDlg::OnInitDialog()
 		return FALSE;
 	}
 
-	HexControl mHexControl(m_hWnd);
-	mHexControl.CreateHexView(AfxGetInstanceHandle());
+	HexControl mHexControl;
+	mHexControl.CreateHexView(AfxGetInstanceHandle(), m_hWnd);
 	mHexControl.SetPosition(0, 0, 500, 50);
 
 
