@@ -603,10 +603,17 @@ void HexControl::CreateHexView(HINSTANCE hinstance,HWND hParent)
 void HexControl::SetPosition(int x, int y, int width, int height)
 {
 	SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("pos:x=%d,y=%d,width=%d,height=%d", x, y, width, height));
-	CClientDC dc(this);
-	::GetDC(m_hWndHexView);
-	OnPrepareDC(&dc);
-	dc.DPtoLP(&point);
+	//CClientDC dc(this);
+	//::GetDC(m_hWndHexView);
+	//OnPrepareDC(&dc);
+	//dc.DPtoLP(&point);
+	POINT point[2];
+	point[0].x = x;
+	point[0].y = y;
+	point[1].x = x + width;
+	point[1].y = y + height;
+	int result=DPtoLP(GetDC(m_hWndParent), point, 2);
+	SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("point1:x=%d,y=%d;point2:x=%d,y=%d", point[0].x, point[0].y, point[1].x, point[1].y));
 	::SetWindowPos(m_hWndHexView, m_hWndParent, x, y, width, height, SWP_NOZORDER | SWP_SHOWWINDOW);
 }
 

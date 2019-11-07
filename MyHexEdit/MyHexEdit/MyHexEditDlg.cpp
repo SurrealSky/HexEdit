@@ -117,7 +117,11 @@ BOOL CMyHexEditDlg::OnInitDialog()
 
 	HexControl mHexControl;
 	mHexControl.CreateHexView(AfxGetInstanceHandle(), m_hWnd);
-	mHexControl.SetPosition(0, 0, 500, 50);
+	mHexControl.SetPosition(0, 90, 500, 50);
+
+	HexControl mHexControl2;
+	mHexControl2.CreateHexView(AfxGetInstanceHandle(), m_hWnd);
+	mHexControl2.SetPosition(0, 215, 500, 50);
 
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
