@@ -4,14 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyHexEdit", "MyHexEdit\MyHexEdit.vcxproj", "{AE62CFB5-6402-49A5-B22B-1036043CE255}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E694F3B2-E296-48CC-955E-25B2CB5E9677} = {E694F3B2-E296-48CC-955E-25B2CB5E9677}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HexControl", "HexControl\HexControl.vcxproj", "{E694F3B2-E296-48CC-955E-25B2CB5E9677}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3FBA3178-4AE6-4103-9EB2-542901D978B7} = {3FBA3178-4AE6-4103-9EB2-542901D978B7}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HexView", "HexView\HexView.vcxproj", "{3FBA3178-4AE6-4103-9EB2-542901D978B7}"
 EndProject
@@ -29,12 +21,6 @@ Global
 		{AE62CFB5-6402-49A5-B22B-1036043CE255}.Release|Win32.ActiveCfg = Release|Win32
 		{AE62CFB5-6402-49A5-B22B-1036043CE255}.Release|Win32.Build.0 = Release|Win32
 		{AE62CFB5-6402-49A5-B22B-1036043CE255}.Release|x64.ActiveCfg = Release|Win32
-		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Debug|Win32.Build.0 = Debug|Win32
-		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Debug|x64.ActiveCfg = Debug|Win32
-		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Release|Win32.ActiveCfg = Release|Win32
-		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Release|Win32.Build.0 = Release|Win32
-		{E694F3B2-E296-48CC-955E-25B2CB5E9677}.Release|x64.ActiveCfg = Release|Win32
 		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Debug|Win32.ActiveCfg = Debug|Win32
 		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Debug|Win32.Build.0 = Debug|Win32
 		{3FBA3178-4AE6-4103-9EB2-542901D978B7}.Debug|x64.ActiveCfg = Debug|x64

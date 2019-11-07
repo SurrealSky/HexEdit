@@ -35,19 +35,6 @@
 
 
 
-#include"../HexControl/HexControlInclude.h"
-
-
-#ifdef _DEBUG
-#pragma comment(lib, "..//debug//HexControl.lib")
-#else
-#pragma comment(lib, "..//Release//HexControl.lib")
-#endif
-
-
-
-
-
 
 
 #ifdef _UNICODE

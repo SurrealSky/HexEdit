@@ -1162,8 +1162,12 @@ LRESULT HexView::OnContextMenu(HWND hwndParam, int x, int y)
 		// if there is a user-specified context-menu, use it
 		UINT uCmd = TrackPopupMenu(m_hUserMenu, TPM_RETURNCMD, x, y, 0, m_hWnd, 0);
 
-		if(uCmd != 0)
-			PostMessage(GetParent(m_hWnd), WM_COMMAND, MAKEWPARAM(uCmd, 0), (LPARAM)GetParent(m_hWnd));
+		HWND DD = GetParent(m_hWnd);
+		if (uCmd != 0)
+		{
+			//PostMessage(GetParent(m_hWnd), WM_COMMAND, MAKEWPARAM(uCmd, 0), (LPARAM)GetParent(m_hWnd));
+			PostMessage(m_hWnd, WM_COMMAND, MAKEWPARAM(uCmd, 0), (LPARAM)m_hWnd);
+		}
 	}
 	else
 	{

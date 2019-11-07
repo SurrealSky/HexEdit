@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common\Trace.c" />
+    <ClCompile Include="HexControl.cpp" />
     <ClCompile Include="HexView.cpp" />
     <ClCompile Include="HexViewBoomark.cpp" />
     <ClCompile Include="HexViewClipboard.cpp" />
@@ -182,8 +183,10 @@
     <ClCompile Include="sequence.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HexControl.h" />
     <ClInclude Include="HexView.h" />
     <ClInclude Include="HexViewInternal.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="seqbase.h" />
     <ClInclude Include="sequence.h" />
   </ItemGroup>
