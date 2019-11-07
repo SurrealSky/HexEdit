@@ -1,6 +1,7 @@
 #include<string>
 #include"HexControl.h"
 #include"HexView.h"
+#include<LogLib\DebugLog.h>
 #include"resource.h"
 
 #define WM_EDIT_CUT		WM_USER+100
@@ -601,7 +602,12 @@ void HexControl::CreateHexView(HINSTANCE hinstance,HWND hParent)
 
 void HexControl::SetPosition(int x, int y, int width, int height)
 {
-	::SetWindowPos(m_hWndHexView, m_hWndParent, x, y, x+ width, y+ height, SWP_NOZORDER | SWP_SHOWWINDOW);
+	SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("pos:x=%d,y=%d,width=%d,height=%d", x, y, width, height));
+	CClientDC dc(this);
+	::GetDC(m_hWndHexView);
+	OnPrepareDC(&dc);
+	dc.DPtoLP(&point);
+	::SetWindowPos(m_hWndHexView, m_hWndParent, x, y, width, height, SWP_NOZORDER | SWP_SHOWWINDOW);
 }
 
 void HexControl::SetData(BYTE *data, unsigned __int64 len)

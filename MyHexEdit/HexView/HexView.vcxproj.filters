@@ -16,6 +16,12 @@
     <Filter Include="Export">
       <UniqueIdentifier>{b981e156-30ff-46ae-893c-76eb173a8bda}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CommonLib">
+      <UniqueIdentifier>{d5d35b19-d70e-464b-9b94-1c9057c167f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonLib\LogLib">
+      <UniqueIdentifier>{f08a600c-2e2b-4fd2-84cb-fa49970e06ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -81,6 +87,12 @@
     <ClCompile Include="HexControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\CommonLib\include\LogLib\DebugLog.cpp">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\include\LogLib\log4z.cpp">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HexView.h">
@@ -100,6 +112,12 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\include\LogLib\DebugLog.h">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\include\LogLib\log4z.h">
+      <Filter>CommonLib\LogLib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
