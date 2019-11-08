@@ -10,7 +10,7 @@ public:
 	~HexControl();
 public:
 	void CreateHexView(HINSTANCE, HWND);
-	void SetPosition(int x, int y, int width, int height);
+	void SetPosition(int sysDPI,int x, int y, int width, int height);
 	void SetData(BYTE *data, unsigned __int64 len);
 	unsigned __int64 GetDataLen();
 	void GetData(BYTE *data, unsigned __int64 len);

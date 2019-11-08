@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include"../HexView/HexControl.h"
 
 
 // CMyHexEditDlg ¶Ô»°¿ò
@@ -32,6 +33,8 @@ protected:
 public:
 	afx_msg void OnBnClickedButton1();
 public:
-	CWnd *p1;
-	CWnd *p2;
+	HexControl mHexControl;
+	HexControl mHexControl2;
+	bool isInit;
+	afx_msg void OnSize(UINT nType, int cx, int cy);
 };

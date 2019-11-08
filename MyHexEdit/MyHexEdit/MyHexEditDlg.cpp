@@ -6,7 +6,8 @@
 #include "MyHexEdit.h"
 #include "MyHexEditDlg.h"
 #include "afxdialogex.h"
-#include"../HexView/HexControl.h"
+#include <ShellScalingApi.h>
+
 
 #ifdef _DEBUG
 #pragma comment(lib,"../Debug/HexView.lib")
@@ -59,6 +60,7 @@ CMyHexEditDlg::CMyHexEditDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CMyHexEditDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	isInit = false;
 }
 
 void CMyHexEditDlg::DoDataExchange(CDataExchange* pDX)
@@ -71,6 +73,7 @@ BEGIN_MESSAGE_MAP(CMyHexEditDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON1, &CMyHexEditDlg::OnBnClickedButton1)
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 
@@ -115,14 +118,10 @@ BOOL CMyHexEditDlg::OnInitDialog()
 		return FALSE;
 	}
 
-	HexControl mHexControl;
 	mHexControl.CreateHexView(AfxGetInstanceHandle(), m_hWnd);
-	mHexControl.SetPosition(0, 90, 500, 50);
-
-	HexControl mHexControl2;
+	mHexControl.SetPosition(96,0, 90, 500, 50);
 	mHexControl2.CreateHexView(AfxGetInstanceHandle(), m_hWnd);
-	mHexControl2.SetPosition(0, 215, 500, 50);
-
+	mHexControl2.SetPosition(96,0, 215, 500, 50);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -181,4 +180,10 @@ HCURSOR CMyHexEditDlg::OnQueryDragIcon()
 void CMyHexEditDlg::OnBnClickedButton1()
 {
 	// TODO:  在此添加控件通知处理程序代码
+}
+
+
+void CMyHexEditDlg::OnSize(UINT nType, int cx, int cy)
+{
+	CDialogEx::OnSize(nType, cx, cy);	
 }
