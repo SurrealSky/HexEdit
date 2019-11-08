@@ -600,7 +600,7 @@ void HexControl::CreateHexView(HINSTANCE hinstance,HWND hParent)
 	SetWindowLong(m_hWndHexView, GWL_WNDPROC, (LONG)MyHexViewWndProc);
 }
 
-void HexControl::SetPosition(int sysDPI, int x, int y, int width, int height)
+void HexControl::SetPosition(int x, int y, int width, int height, int sysDPI)
 {
 	//SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("pos:x=%d,y=%d,width=%d,height=%d", x, y, width, height));
 

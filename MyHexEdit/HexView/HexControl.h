@@ -1,7 +1,8 @@
 #pragma once
 #include<Windows.h>
 
-
+#define CUR_DEVICES_DPI96	96
+#define CUR_DEVICES_DPI120	120
 
 class HexControl
 {
@@ -10,7 +11,7 @@ public:
 	~HexControl();
 public:
 	void CreateHexView(HINSTANCE, HWND);
-	void SetPosition(int sysDPI,int x, int y, int width, int height);
+	void SetPosition(int x, int y, int width, int height, int sysDPI= CUR_DEVICES_DPI96);
 	void SetData(BYTE *data, unsigned __int64 len);
 	unsigned __int64 GetDataLen();
 	void GetData(BYTE *data, unsigned __int64 len);
