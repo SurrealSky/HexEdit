@@ -602,7 +602,7 @@ void HexControl::CreateHexView(HINSTANCE hinstance,HWND hParent)
 
 void HexControl::SetPosition(int sysDPI, int x, int y, int width, int height)
 {
-	SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("pos:x=%d,y=%d,width=%d,height=%d", x, y, width, height));
+	//SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("pos:x=%d,y=%d,width=%d,height=%d", x, y, width, height));
 
 	HDC desktopDc = ::GetDC(0);
 	int horizontalDPI = GetDeviceCaps(desktopDc, LOGPIXELSX);
@@ -616,8 +616,8 @@ void HexControl::SetPosition(int sysDPI, int x, int y, int width, int height)
 	int dpiScaledWidth = MulDiv(width, iDpi, sysDPI);
 	int dpiScaledHeight = MulDiv(height, iDpi, sysDPI);
 
-	SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("horizontalDPI:%d,verticalDPI:%d", horizontalDPI, verticalDPI));
-	SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("pos scale:x=%d,width=%d;y=%d,height=%d", dpiScaledX, dpiScaledWidth, dpiScaledY, dpiScaledHeight));
+	//SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("horizontalDPI:%d,verticalDPI:%d", horizontalDPI, verticalDPI));
+	//SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("pos scale:x=%d,width=%d;y=%d,height=%d", dpiScaledX, dpiScaledWidth, dpiScaledY, dpiScaledHeight));
 	SetWindowPos(m_hWndHexView, m_hWndParent, dpiScaledX, dpiScaledY, dpiScaledWidth, dpiScaledHeight, SWP_NOZORDER | SWP_SHOWWINDOW);
 }
 
