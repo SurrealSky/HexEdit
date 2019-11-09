@@ -74,6 +74,7 @@ BEGIN_MESSAGE_MAP(CMyHexEditDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON1, &CMyHexEditDlg::OnBnClickedButton1)
 	ON_WM_SIZE()
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -195,4 +196,12 @@ void CMyHexEditDlg::OnBnClickedButton1()
 void CMyHexEditDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialogEx::OnSize(nType, cx, cy);	
+}
+
+
+void CMyHexEditDlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	// TODO: 在此处添加消息处理程序代码
 }

@@ -161,9 +161,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\CommonLib\include\LogLib\DebugLog.cpp" />
     <ClCompile Include="..\CommonLib\include\LogLib\log4z.cpp" />
     <ClCompile Include="..\common\Trace.c" />
