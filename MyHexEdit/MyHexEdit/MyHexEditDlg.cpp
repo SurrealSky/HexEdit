@@ -124,7 +124,7 @@ BOOL CMyHexEditDlg::OnInitDialog()
 	mHexControl.SetPosition(0, 90, 500, 50);
 	mHexControl.SetData(buffer, sizeof(buffer));
 	mHexControl2.CreateHexView(AfxGetInstanceHandle(), m_hWnd);
-	mHexControl2.SetPosition(0, 215, 500, 50);
+	mHexControl2.SetPosition(0, 215, 650, 50);
 	mHexControl2.SetData(buffer, sizeof(buffer));
 	mHexControl2.SetBkFillColor(0, 2, 0, 255, 0);
 	mHexControl2.SetBkFillColor(3, 2, 128, 0, 128);

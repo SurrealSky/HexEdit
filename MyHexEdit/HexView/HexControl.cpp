@@ -691,8 +691,8 @@ void HexControl::SetBkFillColor(const __int64 offset, const __int64 length, cons
 	bm.flags = HVBF_NOENUM | HVBF_NOPERSIST | HVBF_NOBOOKNOTE;
 	bm.col = 0;
 	bm.backcol = RGB(r, g, b);//RGB(rand()+128, rand()+128, rand()+128);//0xffffff;
-	bm.pszText = "";
-	bm.pszTitle = "";
+	bm.pszText = 0;
+	bm.pszTitle = 0;
 	bm.offset = offset;
 	bm.length = length;
 	HexView_AddBookmark(m_hWndHexView, &bm);
