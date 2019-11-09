@@ -187,7 +187,7 @@ void GetCurSelData(HWND m_hWndHexView,BYTE *buffer, unsigned __int64 len)
 	HexView_SetCurPos(m_hWndHexView, oldPos);
 }
 
-void SetData(HWND m_hWndHexView,BYTE *data, unsigned __int64 len)
+void SetData(HWND m_hWndHexView, const BYTE *data, const unsigned __int64 len)
 {
 	HexView_Clear(m_hWndHexView);
 	HexView_SetDataCur(m_hWndHexView, data, len);
@@ -455,6 +455,18 @@ void OnEditClear(HWND m_hWndHexView)
 	HexView_Clear(m_hWndHexView);
 }
 
+HFONT EasyCreateFont(const char *szName, int pointSize, BOOL bold)
+{
+	HDC hdc = GetDC(0);
+	HFONT hFont;
+
+	int lfHeight = -MulDiv(pointSize, GetDeviceCaps(hdc, LOGPIXELSY), 72);
+	hFont = CreateFont(lfHeight, 0, 0, 0, bold ? FW_BOLD : FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, szName);
+
+	ReleaseDC(0, hdc);
+	return hFont;
+}
+
 WNDPROC mDefWindowProc=0;
 LRESULT CALLBACK MyHexViewWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -539,7 +551,7 @@ LRESULT CALLBACK MyHexViewWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPa
 	return mDefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-void HexControl::CreateHexView(HINSTANCE hinstance,HWND hParent)
+void HexControl::CreateHexView(const HINSTANCE hinstance,const HWND hParent)
 {
 	m_hWndParent = hParent;
 	m_hWndHexView = ::CreateHexView(m_hWndParent);
@@ -582,9 +594,11 @@ void HexControl::CreateHexView(HINSTANCE hinstance,HWND hParent)
 
 	// set the default styles
 	//DWORD dwStyle = HVS_RESIZEBAR | HVS_ALWAYSVSCROLL | HVS_ALWAYSHSCROLL | HVS_FORCE_FIXEDCOLS;// | HVS_FITTOWINDOW;
-	DWORD dwStyle = HVS_RESIZEBAR | HVS_ALWAYSDELETE;// | HVS_FITTOWINDOW;
+	DWORD dwStyle = HVS_RESIZEBAR  | HVS_SHOWMODS  ;// | HVS_FITTOWINDOW;
 	HexView_SetStyle(m_hWndHexView, -1, dwStyle);
 	HexView_SetDataShift(m_hWndHexView, 0);
+	//设置编辑模式
+	HexView_SetEditMode(m_hWndHexView, HVMODE_OVERWRITE);
 	// 设置字体
 	HFONT g_hHexViewFont = (HFONT)GetStockObject(DEFAULT_GUI_FONT);
 	::SendMessage(m_hWndHexView, WM_SETFONT, (WPARAM)g_hHexViewFont, 0);
@@ -600,7 +614,19 @@ void HexControl::CreateHexView(HINSTANCE hinstance,HWND hParent)
 	SetWindowLong(m_hWndHexView, GWL_WNDPROC, (LONG)MyHexViewWndProc);
 }
 
-void HexControl::SetPosition(int x, int y, int width, int height, int sysDPI)
+void HexControl::SetEditMode(EditMode m)
+{
+	if (m == EditMode::INSERT)
+		HexView_SetEditMode(m_hWndHexView, HVMODE_INSERT);
+	else if(m == EditMode::READONLY)
+		HexView_SetEditMode(m_hWndHexView, HVMODE_READONLY);
+	else if(m == EditMode::OVERWRITE)
+		HexView_SetEditMode(m_hWndHexView, HVMODE_OVERWRITE);
+	else if(m == EditMode::QUICKSAVE)
+		HexView_SetEditMode(m_hWndHexView, HVMODE_QUICKSAVE);
+}
+
+void HexControl::SetPosition(const int x,const int y, const int width, const int height, const int sysDPI)
 {
 	//SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("pos:x=%d,y=%d,width=%d,height=%d", x, y, width, height));
 
@@ -621,7 +647,7 @@ void HexControl::SetPosition(int x, int y, int width, int height, int sysDPI)
 	SetWindowPos(m_hWndHexView, m_hWndParent, dpiScaledX, dpiScaledY, dpiScaledWidth, dpiScaledHeight, SWP_NOZORDER | SWP_SHOWWINDOW);
 }
 
-void HexControl::SetData(BYTE *data, unsigned __int64 len)
+void HexControl::SetData(const BYTE *data, const unsigned __int64 len)
 {
 	::SetData(m_hWndHexView, data, len);
 }
@@ -638,12 +664,36 @@ void HexControl::GetData(BYTE *data, unsigned __int64 len)
 	::GetData(m_hWndHexView, data, len);
 }
 
-void HexControl::SetDataPtr(DWORD_PTR ptr)
+void HexControl::SetDataPtr(const DWORD_PTR ptr)
 {
-	ptr = ptr;
+	this->ptr = ptr;
 }
 
 DWORD_PTR HexControl::GetDataPtr()
 {
 	return ptr;
+}
+
+void HexControl::SetFont(const char *szFont,const int nSize,const bool bold)
+{
+	HFONT hFont = EasyCreateFont(szFont, nSize, bold);
+	HexView_SetFont(m_hWndHexView, hFont);
+}
+
+void HexControl::SetFontColor(const BYTE r, const BYTE g, const BYTE b)
+{
+	HexView_SetColor(m_hWndHexView, HVC_MODIFY, RGB(r, g, b));
+}
+
+void HexControl::SetBkFillColor(const __int64 offset, const __int64 length, const BYTE r, const BYTE g, const BYTE b)
+{
+	BOOKMARK bm;
+	bm.flags = HVBF_NOENUM | HVBF_NOPERSIST | HVBF_NOBOOKNOTE;
+	bm.col = 0;
+	bm.backcol = RGB(r, g, b);//RGB(rand()+128, rand()+128, rand()+128);//0xffffff;
+	bm.pszText = "";
+	bm.pszTitle = "";
+	bm.offset = offset;
+	bm.length = length;
+	HexView_AddBookmark(m_hWndHexView, &bm);
 }

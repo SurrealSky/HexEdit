@@ -118,10 +118,19 @@ BOOL CMyHexEditDlg::OnInitDialog()
 		return FALSE;
 	}
 
+	BYTE buffer[] = "hello worldhello worldhello";
+
 	mHexControl.CreateHexView(AfxGetInstanceHandle(), m_hWnd);
-	mHexControl.SetPosition(96,0, 90, 500, 50);
+	mHexControl.SetPosition(0, 90, 500, 50);
+	mHexControl.SetData(buffer, sizeof(buffer));
 	mHexControl2.CreateHexView(AfxGetInstanceHandle(), m_hWnd);
-	mHexControl2.SetPosition(96,0, 215, 500, 50);
+	mHexControl2.SetPosition(0, 215, 500, 50);
+	mHexControl2.SetData(buffer, sizeof(buffer));
+	mHexControl2.SetBkFillColor(0, 2, 0, 255, 0);
+	mHexControl2.SetBkFillColor(3, 2, 128, 0, 128);
+	mHexControl2.SetEditMode(READONLY);
+	
+	mHexControl2.SetFont("宋体",10,false);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
