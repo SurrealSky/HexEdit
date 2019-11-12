@@ -28,6 +28,7 @@ public:
 	DWORD_PTR GetDataPtr();
 	void SetFont(const char *szFont, const int nSize, const bool bold);
 	void SetFontColor(const BYTE r,const BYTE g,const BYTE b);
+	void ClearFillColor();
 	void SetBkFillColor(const __int64 offset,const __int64 length,const BYTE r, const BYTE g, const BYTE b);
 private:
 	HWND m_hWndParent;

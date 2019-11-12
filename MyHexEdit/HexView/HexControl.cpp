@@ -685,6 +685,11 @@ void HexControl::SetFontColor(const BYTE r, const BYTE g, const BYTE b)
 	HexView_SetColor(m_hWndHexView, HVC_MODIFY, RGB(r, g, b));
 }
 
+void HexControl::ClearFillColor()
+{
+	HexView_ClearBookmarks(m_hWndHexView);
+}
+
 void HexControl::SetBkFillColor(const __int64 offset, const __int64 length, const BYTE r, const BYTE g, const BYTE b)
 {
 	BOOKMARK bm;

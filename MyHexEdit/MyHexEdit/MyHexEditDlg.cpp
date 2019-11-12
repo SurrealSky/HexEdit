@@ -128,6 +128,7 @@ BOOL CMyHexEditDlg::OnInitDialog()
 	mHexControl2.SetPosition(0, 215, 650, 50);
 	mHexControl2.SetData(buffer, sizeof(buffer));
 	mHexControl2.SetBkFillColor(0, 2, 0, 255, 0);
+	mHexControl2.ClearFillColor();
 	mHexControl2.SetBkFillColor(3, 2, 128, 0, 128);
 	mHexControl2.SetEditMode(READONLY);
 	
