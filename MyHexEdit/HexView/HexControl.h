@@ -18,7 +18,7 @@ public:
 	HexControl();
 	~HexControl();
 public:
-	void CreateHexView(const HINSTANCE, const HWND);
+	void CreateHexView(const HINSTANCE hinstance, const HWND m_hWndParent);
 	void SetEditMode(EditMode);
 	void SetPosition(const int x, const int y, const int width, const int height, const int sysDPI= CUR_DEVICES_DPI96);
 	void SetData(const BYTE *data, const unsigned __int64 len);
@@ -30,6 +30,7 @@ public:
 	void SetFontColor(const BYTE r,const BYTE g,const BYTE b);
 	void ClearFillColor();
 	void SetBkFillColor(const __int64 offset,const __int64 length,const BYTE r, const BYTE g, const BYTE b);
+	HWND GetHWND() { return m_hWndHexView; }
 private:
 	HWND m_hWndParent;
 	HWND m_hWndHexView;

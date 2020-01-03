@@ -26,6 +26,9 @@
 
 HexControl::HexControl()
 {
+	m_hWndParent = 0;
+	m_hWndHexView = 0;
+	ptr=0;
 }
 
 HexControl::~HexControl()
