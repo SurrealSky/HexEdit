@@ -16,6 +16,7 @@
 #define WM_EDIT_SELECTALL	WM_USER+108
 #define WM_EDIT_DELETE		WM_USER+109
 #define WM_EDIT_CLEAR		WM_USER+110
+#define WM_SAVE_AS			WM_USER+111
 
 //CopyPaste Type
 #define CT_Binary		0
@@ -458,6 +459,34 @@ void OnEditClear(HWND m_hWndHexView)
 	HexView_Clear(m_hWndHexView);
 }
 
+void OnSaveAs(HWND m_hWndHexView)
+{
+	char file[MAX_PATH] = { 0 };
+	OPENFILENAME ofn = { 0 };
+	ofn.lStructSize = sizeof(OPENFILENAME);
+
+	char strFilter[] = "二进制文件(*.bin) | *.bin | 所有文件(*.*) | *.* \0 ";
+
+	// 防止在弹出文件对话框时，去操作主窗口，所以先disable掉，等文件对话框关闭后再恢复
+	::EnableWindow(GetParent(m_hWndHexView), FALSE);
+
+	ofn.lpstrFile = file;
+	ofn.lpstrFilter = strFilter;
+	ofn.nMaxFile = MAX_PATH;
+	ofn.nFilterIndex = 1;
+	ofn.lpstrFileTitle = NULL;
+	ofn.nMaxFileTitle = 0;
+	ofn.lpstrInitialDir = NULL;
+	ofn.hwndOwner = GetParent(m_hWndHexView);
+	ofn.Flags = OFN_EXPLORER | OFN_HIDEREADONLY | OFN_NOCHANGEDIR | OFN_PATHMUSTEXIST | OFN_OVERWRITEPROMPT;
+	bool bRet = GetSaveFileName(&ofn);
+	if (bRet)
+	{
+		::EnableWindow(GetParent(m_hWndHexView), TRUE);
+		HexView_SaveFile(m_hWndHexView, file, 0);
+	}
+}
+
 HFONT EasyCreateFont(const char *szName, int pointSize, BOOL bold)
 {
 	HDC hdc = GetDC(0);
@@ -549,6 +578,10 @@ LRESULT CALLBACK MyHexViewWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPa
 			{
 				OnEditClear(hwnd);
 			}break;
+			case WM_SAVE_AS:
+			{
+				OnSaveAs(hwnd);
+			}break;
 		}
 	}
 	return mDefWindowProc(hwnd, msg, wParam, lParam);
@@ -592,6 +625,7 @@ void HexControl::CreateHexView(const HINSTANCE hinstance,const HWND hParent)
 	AppendMenu(hMenu, MF_STRING | fCanUndo, WM_EDIT_DELETE, "&Delete");
 	AppendMenu(hMenu, MF_STRING | fCanUndo, WM_EDIT_CLEAR, "Clear");
 	AppendMenu(hMenu, MF_STRING | fCanUndo, WM_EDIT_SELECTALL, "&Selete All");
+	AppendMenu(hMenu, MF_STRING | fCanUndo, WM_SAVE_AS, "Save As...");
 	
 	HexView_SetContextMenu(m_hWndHexView, hMenu);
 
